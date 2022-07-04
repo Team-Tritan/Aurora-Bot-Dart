@@ -7,4 +7,5 @@ class CONFIG {
   static final bool register_on_ready = true;
   static final String mongodb = 'mongodb://38.101.26.70:27017/dart';
   static final String ownerID = '359498825150365699';
+  static final activities = ["ur cock", "ur mom", "your dms"];
 }
