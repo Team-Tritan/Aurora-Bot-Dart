@@ -7,6 +7,7 @@ class CoinFlipCommand {
   String name = "coinflip";
   String category = "fun";
   String description = "A super awesome coin flip command.";
+  
   execute(client) {
     print("[Command Ran] --> $name");
 
