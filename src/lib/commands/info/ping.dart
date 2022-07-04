@@ -7,6 +7,7 @@ class PingCommand {
   String name = "ping";
   String category = "info";
   String description = "Get the websocket latency of the bot.";
+  
   execute(client) {
     print("[Command Ran] --> $name");
 
