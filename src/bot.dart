@@ -2,6 +2,7 @@ import 'package:nyxx/nyxx.dart';
 import './config.dart';
 import './lib/handlers/registerCommands.dart';
 import './lib/handlers/registerEvents.dart';
+import './lib/database/init.dart';
 
 void main() {
   var client = NyxxFactory.createNyxxWebsocket(
@@ -22,4 +23,5 @@ void main() {
 
   registerEvents(client);
   registerCommands(client);
+  OpenDatabase(client);
 }
