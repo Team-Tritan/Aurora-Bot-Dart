@@ -1,6 +1,7 @@
 import "package:nyxx/nyxx.dart";
 import "package:nyxx_interactions/nyxx_interactions.dart";
 import '../../../config.dart';
+import '../../handlers/registerCommands.dart';
 
 class InviteCommand {
   String name = "invite";
@@ -19,14 +20,6 @@ class InviteCommand {
         await event.respond(MessageBuilder.content('$invite'));
       });
 
-    if (CONFIG.register_on_ready) {
-      registerSlashCommand(client, data);
-    }
-  }
-
-  registerSlashCommand(client, data) {
-    IInteractions.create(WebsocketInteractionBackend(client))
-      ..registerSlashCommand(data)
-      ..syncOnReady();
+    interactionsWS..registerSlashCommand(data);
   }
 }

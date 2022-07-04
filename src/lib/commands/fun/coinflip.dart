@@ -1,7 +1,7 @@
 import 'dart:math';
 import "package:nyxx/nyxx.dart";
 import "package:nyxx_interactions/nyxx_interactions.dart";
-import "../../../config.dart";
+import '../../handlers/registerCommands.dart';
 
 class CoinFlipCommand {
   String name = "coinflip";
@@ -17,19 +17,12 @@ class CoinFlipCommand {
         final embed = EmbedBuilder()
           ..title = 'Dart Bot'
           ..description = 'The result for your coinflip is **$result**.'
-          ..color = '#5865F2' as DiscordColor?;
+          ..color = DiscordColor.fromHexString("#5865F2")
+          ..timestamp = DateTime.now();
 
         await event.respond(MessageBuilder.embed(embed));
       });
 
-    if (CONFIG.register_on_ready) {
-      registerSlashCommand(client, data);
-    }
-  }
-
-  registerSlashCommand(client, data) {
-    IInteractions.create(WebsocketInteractionBackend(client))
-      ..registerSlashCommand(data)
-      ..syncOnReady();
+    interactionsWS..registerSlashCommand(data);
   }
 }
