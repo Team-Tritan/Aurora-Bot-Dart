@@ -18,7 +18,7 @@ class CoinFlipCommand {
 
         final embed = EmbedBuilder()
           ..addAuthor((author) {
-            author.name = 'Tritan Bot';
+            author.name = 'Unnamed Bot';
           })
           ..title = 'Coin Flip'
           ..description = 'The result is **$result**.'
