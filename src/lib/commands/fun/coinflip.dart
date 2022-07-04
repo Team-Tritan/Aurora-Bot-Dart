@@ -7,7 +7,7 @@ class CoinFlipCommand {
   String name = "coinflip";
   String category = "fun";
   String description = "A super awesome coin flip command.";
-  
+
   execute(client) {
     print("[Command Ran] --> $name");
 
@@ -19,7 +19,7 @@ class CoinFlipCommand {
 
         final embed = EmbedBuilder()
           ..addAuthor((author) {
-            author.name = 'Unnamed Bot';
+            author.name = 'Aurora Bot';
           })
           ..title = 'Coin Flip'
           ..description = 'The result is **$result**.'

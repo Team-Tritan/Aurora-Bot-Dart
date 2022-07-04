@@ -1,12 +1,16 @@
 import 'package:nyxx_interactions/nyxx_interactions.dart';
 import 'package:nyxx/nyxx.dart';
 import '../../handlers/registerInteractions.dart' show interactionsWS;
+import '../../utils/checkForGuild.dart';
 
 class BookmarkCommand {
   String name = "bookmark";
   String category = "utility";
   String description = "Bookmark a message from a server to your dms!";
+  bool dm_disabled = true;
+
   late final EmbedBuilder bookmarkEmbed;
+  late final IMessage message;
 
   execute(client) {
     print("[Command Ran] --> $name");
@@ -20,15 +24,11 @@ class BookmarkCommand {
       )
     ])
       ..registerHandler((event) async {
+        if (dm_disabled) checkForGuild(event);
+
         await event.acknowledge();
 
-        late final IMessage message;
-
-        print(event.interaction.type);
-        print(SlashCommandType.chat.value);
-
         if (event.interaction.type == 2) {
-          // If slash command type is chat.
           final id = int.parse(event.getArg('id').value.toString());
           final channel = await event.interaction.channel.getOrDownload();
           message = await channel.fetchMessage(id.toSnowflake());
@@ -38,7 +38,7 @@ class BookmarkCommand {
 
         bookmarkEmbed = EmbedBuilder()
           ..addAuthor((author) {
-            author.name = 'Unnamed Bot';
+            author.name = 'Aurora Bot';
           })
           ..title = 'Bookmarked message'
           ..description = message.content.isNotEmpty ? message.content : null

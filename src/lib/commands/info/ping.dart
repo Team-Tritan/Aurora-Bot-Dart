@@ -2,17 +2,21 @@ import 'package:http/http.dart' as http;
 import "package:nyxx/nyxx.dart";
 import "package:nyxx_interactions/nyxx_interactions.dart";
 import '../../handlers/registerInteractions.dart';
+import '../../utils/checkForGuild.dart';
 
 class PingCommand {
   String name = "ping";
   String category = "info";
   String description = "Get the websocket latency of the bot.";
-  
+  bool dm_disabled = false;
+
   execute(client) {
     print("[Command Ran] --> $name");
 
     final data = SlashCommandBuilder("$name", "$description", [])
       ..registerHandler((event) async {
+        if (dm_disabled) checkForGuild(event);
+
         await event.acknowledge();
 
         final gatewayDelayInMillis = (event.client as INyxxWebsocket)
@@ -31,7 +35,7 @@ class PingCommand {
 
         final latencyEmbed = EmbedBuilder()
           ..addAuthor((author) {
-            author.name = 'Unnamed Bot';
+            author.name = 'Aurora Bot';
           })
           ..color = DiscordColor.fromHexString("#5865F2")
           ..title = ':ping_pong: Ping'
