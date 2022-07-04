@@ -18,7 +18,12 @@ class CoinFlipCommand {
           ..title = 'Dart Bot'
           ..description = 'The result for your coinflip is **$result**.'
           ..color = DiscordColor.fromHexString("#5865F2")
-          ..timestamp = DateTime.now();
+          ..timestamp = DateTime.now()
+          ..addFooter((footer) {
+            footer.text =
+                'Requested by ${event.interaction.userAuthor?.username}';
+            footer.iconUrl = event.interaction.userAuthor?.avatarURL();
+          });
 
         await event.respond(MessageBuilder.embed(embed));
       });
