@@ -1,13 +1,13 @@
 import 'package:nyxx/nyxx.dart';
 import './config.dart';
-import './lib/handlers/registerCommands.dart';
+import 'lib/handlers/registerInteractions.dart';
 import './lib/handlers/registerEvents.dart';
-import './lib/database/init.dart';
+import './lib/utils/database.dart';
 
 late INyxxWebsocket client;
 
 void main() {
-  var client = NyxxFactory.createNyxxWebsocket(
+  client = NyxxFactory.createNyxxWebsocket(
     CONFIG.token,
     CONFIG.intents,
     options: ClientOptions(
@@ -24,6 +24,6 @@ void main() {
     ..connect();
 
   registerEvents(client);
-  registerCommands(client);
-  OpenDatabase(client);
+  registerInteractions(client);
+  initDatabase(client);
 }
