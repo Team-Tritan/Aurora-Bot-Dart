@@ -1,17 +1,23 @@
 import 'package:nyxx/nyxx.dart';
+import './lib/eventHandler.dart';
 import 'config.dart';
 
 void main() {
-  final bot = NyxxFactory.createNyxxWebsocket(CONFIG.token, CONFIG.intents)
+  var bot = NyxxFactory.createNyxxWebsocket(
+    CONFIG.token,
+    CONFIG.intents,
+    options: ClientOptions(
+      initialPresence: PresenceBuilder.of(
+        activity: ActivityBuilder.watching("ur cock"),
+        status: UserStatus.dnd,
+      ),
+      dispatchRawShardEvent: true,
+    ),
+  )
     ..registerPlugin(Logging())
     ..registerPlugin(CliIntegration())
     ..registerPlugin(IgnoreExceptions())
     ..connect();
 
-  // Listen for message events
-  bot.eventsWs.onMessageReceived.listen((event) {
-    if (event.message.content == "!ping") {
-      event.message.channel.sendMessage(MessageBuilder.content("Pong!"));
-    }
-  });
+  handleEvents(bot);
 }
