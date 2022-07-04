@@ -1,7 +1,7 @@
 import "package:nyxx/nyxx.dart";
 import "package:nyxx_interactions/nyxx_interactions.dart";
 import '../../../config.dart';
-import '../../handlers/registerCommands.dart';
+import '../../handlers/registerInteractions.dart';
 
 class InviteCommand {
   String name = "invite";
