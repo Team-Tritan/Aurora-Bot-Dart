@@ -6,7 +6,7 @@ checkForGuild(event) {
       ..addAuthor((author) {
         author.name = 'Aurora Bot';
       })
-      ..title = 'Command Failed'
+      ..title = ':x: Command Failed'
       ..description =
           "We're sorry, this command does not work in the DMs. You can run this in a server though!"
       ..color = DiscordColor.fromHexString("#5865F2")
