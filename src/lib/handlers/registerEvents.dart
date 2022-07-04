@@ -1,9 +1,9 @@
-library handlers;
+library registerEvents;
 
-import '../events/onReady.dart';
+import '../events/onDmReceived.dart';
 import '../events/onMessageReceived.dart';
 
 Future<void> registerEvents(client) async {
-  onReady().bind(client);
-  onMessageReceived().bind(client);
+  client.eventsWs.onDmReceived.listen(onDmReceived);
+  client.eventsWs.onMessageReceived.listen(onMessageReceived);
 }

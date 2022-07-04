@@ -12,6 +12,8 @@ class CoinFlipCommand {
 
     final data = SlashCommandBuilder("$name", "$description", [])
       ..registerHandler((event) async {
+        await event.acknowledge();
+
         final result = Random().nextBool() ? "tail" : "heads";
 
         final embed = EmbedBuilder()

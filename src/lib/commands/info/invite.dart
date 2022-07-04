@@ -12,6 +12,8 @@ class InviteCommand {
 
     final data = SlashCommandBuilder("$name", "$description", [])
       ..registerHandler((event) async {
+        await event.acknowledge();
+
         var ClientID = CONFIG.clientID;
 
         String invite =

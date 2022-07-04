@@ -4,6 +4,8 @@ import './lib/handlers/registerCommands.dart';
 import './lib/handlers/registerEvents.dart';
 import './lib/database/init.dart';
 
+late INyxxWebsocket client;
+
 void main() {
   var client = NyxxFactory.createNyxxWebsocket(
     CONFIG.token,

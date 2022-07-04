@@ -1,3 +1,5 @@
+library registerCommands;
+
 import 'dart:async';
 import '../commands/fun/coinflip.dart';
 import '../commands/info/help.dart';

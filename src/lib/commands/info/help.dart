@@ -11,6 +11,8 @@ class HelpCommand {
 
     final data = SlashCommandBuilder("$name", "$description", [])
       ..registerHandler((event) async {
+        await event.acknowledge();
+
         final embed = EmbedBuilder()
           ..title = 'Dart Bot'
           ..description = 'Suck my nuts bozo'
