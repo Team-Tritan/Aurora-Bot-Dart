@@ -30,7 +30,7 @@ class PingCommand {
 
         final latencyEmbed = EmbedBuilder()
           ..addAuthor((author) {
-            author.name = 'Dart Bot';
+            author.name = 'Tritan Bot';
           })
           ..color = DiscordColor.fromHexString("#5865F2")
           ..title = ':ping_pong: Ping'

@@ -38,7 +38,7 @@ class BookmarkCommand {
 
         bookmarkEmbed = EmbedBuilder()
           ..addAuthor((author) {
-            author.name = 'Dart Bot';
+            author.name = 'Tritan Bot';
           })
           ..title = 'Bookmarked message'
           ..description = message.content.isNotEmpty ? message.content : null

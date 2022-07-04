@@ -15,7 +15,7 @@ class HelpCommand {
 
         final embed = EmbedBuilder()
           ..addAuthor((author) {
-            author.name = 'Dart Bot';
+            author.name = 'Tritan Bot';
           })
           ..title = 'Help'
           ..description = 'Suck my nuts bozo, coming soon.'
