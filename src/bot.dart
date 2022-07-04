@@ -4,7 +4,7 @@ import './lib/handlers/registerCommands.dart';
 import './lib/handlers/registerEvents.dart';
 
 main() {
-  var bot = NyxxFactory.createNyxxWebsocket(
+  var self = NyxxFactory.createNyxxWebsocket(
     CONFIG.token,
     CONFIG.intents,
     options: ClientOptions(
@@ -20,6 +20,6 @@ main() {
     ..registerPlugin(IgnoreExceptions())
     ..connect();
 
-  registerEvents(bot);
-  registerCommands(bot);
+  registerEvents(self);
+  registerCommands(self);
 }

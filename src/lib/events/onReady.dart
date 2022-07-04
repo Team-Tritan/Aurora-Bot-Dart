@@ -3,10 +3,10 @@ import 'package:nyxx/nyxx.dart';
 class onReady {
   String name = 'onReady';
 
-  bind(bot) {
+  bind(self) {
     print("[Event Loaded] --> onReady");
 
-    bot.eventsWs.onReady.listen((e) {
+    self.eventsWs.onReady.listen((e) {
       print(
           "[Bot Ready] Bot is logged into the discord API and has received the ready event.");
     });

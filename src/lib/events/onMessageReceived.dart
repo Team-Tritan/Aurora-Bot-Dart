@@ -5,10 +5,10 @@ import '../../config.dart';
 class onMessageReceived {
   String name = 'onMessageReceived';
 
-  bind(bot) {
+  bind(self) {
     print("[Event Loaded] --> onMessageReceived");
 
-    bot.eventsWs.onMessageReceived.listen((e) {
+    self.eventsWs.onMessageReceived.listen((e) {
       final prefix = CONFIG.default_prefix;
 
       if (e.message.content == prefix + 'ping') {

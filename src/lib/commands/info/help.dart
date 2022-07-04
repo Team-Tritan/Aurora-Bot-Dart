@@ -6,7 +6,7 @@ class HelpCommand {
   String category = "info";
   String description = "The help command for this bot.";
 
-  execute(bot) {
+  execute(self) {
     final data = SlashCommandBuilder("$name", "$description", [])
       ..registerHandler((event) async {
         print(event);
@@ -14,7 +14,7 @@ class HelpCommand {
         await event.respond(MessageBuilder.content("Work in progress."));
       });
 
-    IInteractions.create(WebsocketInteractionBackend(bot))
+    IInteractions.create(WebsocketInteractionBackend(self))
       ..registerSlashCommand(data)
       ..syncOnReady();
   }

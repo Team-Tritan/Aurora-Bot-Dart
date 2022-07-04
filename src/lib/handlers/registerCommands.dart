@@ -1,7 +1,7 @@
 import '../commands/info/help.dart';
 import '../commands/info/invite.dart';
 
-registerCommands(bot) {
-  HelpCommand().execute(bot);
-  InviteCommand().execute(bot);
+registerCommands(self) {
+  HelpCommand().execute(self);
+  InviteCommand().execute(self);
 }
