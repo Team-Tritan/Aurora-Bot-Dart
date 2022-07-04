@@ -1,16 +1,17 @@
 import "package:nyxx/nyxx.dart";
 import "package:nyxx_interactions/nyxx_interactions.dart";
 
-class HelpCommand {
-  String name = "help";
+class PingCommand {
+  String name = "ping";
   String category = "info";
-  String description = "The help command for this bot.";
+  String description = "Get the websocket ping.";
 
   execute(client) {
     print("[Command Ran] --> $name");
 
     final data = SlashCommandBuilder("$name", "$description", [])
       ..registerHandler((event) async {
+        var user = event.interaction.userAuthor?.username;
         final embed = EmbedBuilder()
           ..title = 'Dart Bot'
           ..description = 'Suck my nuts bozo'

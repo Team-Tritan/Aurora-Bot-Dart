@@ -3,7 +3,7 @@ library handlers;
 import '../events/onReady.dart';
 import '../events/onMessageReceived.dart';
 
-registerEvents(self) async {
-  onReady().bind(self);
-  onMessageReceived().bind(self);
+registerEvents(client) async {
+  onReady().bind(client);
+  onMessageReceived().bind(client);
 }

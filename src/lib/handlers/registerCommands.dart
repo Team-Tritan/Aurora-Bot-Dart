@@ -1,7 +1,9 @@
 import '../commands/info/help.dart';
 import '../commands/info/invite.dart';
+import '../commands/info/ping.dart';
 
-registerCommands(self) {
-  HelpCommand().execute(self);
-  InviteCommand().execute(self);
+registerCommands(client) {
+  HelpCommand().execute(client);
+  InviteCommand().execute(client);
+  PingCommand().execute(client);
 }
