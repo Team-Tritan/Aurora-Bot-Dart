@@ -45,6 +45,8 @@ class BookmarkCommand {
                 'Requested by ${event.interaction.userAuthor?.username}';
             footer.iconUrl = event.interaction.userAuthor?.avatarURL();
           });
+
+        // Do database logic!!!!!
         return event.respond(MessageBuilder.embed(success));
       });
     interactionsWS..registerSlashCommand(data);
