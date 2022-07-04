@@ -5,5 +5,8 @@ class onReady {
 
   bind(client) {
     print("[Event Loaded] --> $name");
+      client.eventsWs.onReady.listen((e) {
+        
+      });
   }
 }
