@@ -1,7 +1,7 @@
 import 'dart:math';
 import "package:nyxx/nyxx.dart";
 import "package:nyxx_interactions/nyxx_interactions.dart";
-import '../../handlers/registerCommands.dart';
+import '../../handlers/registerInteractions.dart';
 
 class CoinFlipCommand {
   String name = "coinflip";
@@ -17,8 +17,11 @@ class CoinFlipCommand {
         final result = Random().nextBool() ? "tail" : "heads";
 
         final embed = EmbedBuilder()
-          ..title = 'Dart Bot'
-          ..description = 'The result for your coinflip is **$result**.'
+          ..addAuthor((author) {
+            author.name = 'Dart Bot';
+          })
+          ..title = 'Coin Flip'
+          ..description = 'The result is **$result**.'
           ..color = DiscordColor.fromHexString("#5865F2")
           ..timestamp = DateTime.now()
           ..addFooter((footer) {

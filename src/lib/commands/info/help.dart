@@ -1,6 +1,6 @@
 import "package:nyxx/nyxx.dart";
 import "package:nyxx_interactions/nyxx_interactions.dart";
-import '../../handlers/registerCommands.dart';
+import '../../handlers/registerInteractions.dart';
 
 class HelpCommand {
   String name = "help";
@@ -14,8 +14,11 @@ class HelpCommand {
         await event.acknowledge();
 
         final embed = EmbedBuilder()
-          ..title = 'Dart Bot'
-          ..description = 'Suck my nuts bozo'
+          ..addAuthor((author) {
+            author.name = 'Dart Bot';
+          })
+          ..title = 'Help'
+          ..description = 'Suck my nuts bozo, coming soon.'
           ..color = DiscordColor.fromHexString("#5865F2")
           ..timestamp = DateTime.now()
           ..addFooter((footer) {
