@@ -2,13 +2,15 @@ import "package:nyxx/nyxx.dart";
 import "package:nyxx_interactions/nyxx_interactions.dart";
 
 class HelpCommand {
-  var name = "help";
-  var category = "info";
-  var description = "The help command for this bot.";
+  String name = "help";
+  String category = "info";
+  String description = "The help command for this bot.";
 
   execute(bot) {
     final data = SlashCommandBuilder("$name", "$description", [])
       ..registerHandler((event) async {
+        print(event);
+
         await event.respond(MessageBuilder.content("Work in progress."));
       });
 

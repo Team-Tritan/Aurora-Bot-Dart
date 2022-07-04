@@ -3,13 +3,15 @@ import "package:nyxx_interactions/nyxx_interactions.dart";
 import '../../../config.dart';
 
 class InviteCommand {
-  var name = "invite";
-  var category = "info";
-  var description = "Get the invite link for this bot.";
+  String name = "invite";
+  String category = "info";
+  String description = "Get the invite link for this bot.";
 
   execute(bot) {
     final data = SlashCommandBuilder("$name", "$description", [])
       ..registerHandler((event) async {
+        print(event);
+
         var ClientID = CONFIG.clientID;
 
         String invite =
