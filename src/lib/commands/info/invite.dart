@@ -7,6 +7,7 @@ class InviteCommand {
   String name = "invite";
   String category = "info";
   String description = "Get the invite link for this bot.";
+  
   execute(client) {
     print("[Command Ran] --> $name");
 
