@@ -1,9 +1,9 @@
 import 'package:nyxx/nyxx.dart';
-import 'lib/registerEvents.dart';
-import 'config.dart';
-import 'lib/registerCommands.dart';
+import './config.dart';
+import './lib/handlers/registerCommands.dart';
+import './lib/handlers/registerEvents.dart';
 
-void main() {
+main() {
   var bot = NyxxFactory.createNyxxWebsocket(
     CONFIG.token,
     CONFIG.intents,
