@@ -6,6 +6,7 @@ class HelpCommand {
   String name = "help";
   String category = "info";
   String description = "The help command for this bot.";
+  
   execute(client) {
     print("[Command Ran] --> $name");
 
