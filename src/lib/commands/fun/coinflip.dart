@@ -1,19 +1,22 @@
+import 'dart:math';
 import "package:nyxx/nyxx.dart";
 import "package:nyxx_interactions/nyxx_interactions.dart";
 import "../../../config.dart";
 
-class HelpCommand {
-  String name = "help";
-  String category = "info";
-  String description = "The help command for this bot.";
+class CoinFlipCommand {
+  String name = "coinflip";
+  String category = "fun";
+  String description = "A super awesome coin flip command.";
   execute(client) {
     print("[Command Ran] --> $name");
 
     final data = SlashCommandBuilder("$name", "$description", [])
       ..registerHandler((event) async {
+        final result = Random().nextBool() ? "tail" : "heads";
+
         final embed = EmbedBuilder()
           ..title = 'Dart Bot'
-          ..description = 'Suck my nuts bozo'
+          ..description = 'The result for your coinflip is **$result**.'
           ..color = '#5865F2' as DiscordColor?;
 
         await event.respond(MessageBuilder.embed(embed));

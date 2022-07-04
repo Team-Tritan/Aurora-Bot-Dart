@@ -3,7 +3,7 @@ import './config.dart';
 import './lib/handlers/registerCommands.dart';
 import './lib/handlers/registerEvents.dart';
 
-main() {
+void main() {
   var client = NyxxFactory.createNyxxWebsocket(
     CONFIG.token,
     CONFIG.intents,
