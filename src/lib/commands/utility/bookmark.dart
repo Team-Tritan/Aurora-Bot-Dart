@@ -10,7 +10,6 @@ class BookmarkCommand {
   bool dm_disabled = true;
 
   late final EmbedBuilder bookmarkEmbed;
-  late final IMessage message;
 
   execute(client) {
     print("[Command Ran] --> $name");
@@ -24,6 +23,8 @@ class BookmarkCommand {
       )
     ])
       ..registerHandler((event) async {
+        late final IMessage message;
+
         if (dm_disabled) checkForGuild(event);
 
         await event.acknowledge();
