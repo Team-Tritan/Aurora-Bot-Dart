@@ -1,6 +1,7 @@
 import 'package:nyxx/nyxx.dart';
-import './lib/eventHandler.dart';
+import 'lib/registerEvents.dart';
 import 'config.dart';
+import 'lib/registerCommands.dart';
 
 void main() {
   var bot = NyxxFactory.createNyxxWebsocket(
@@ -19,5 +20,6 @@ void main() {
     ..registerPlugin(IgnoreExceptions())
     ..connect();
 
-  handleEvents(bot);
+  registerEvents(bot);
+  registerCommands(bot);
 }
