@@ -4,7 +4,7 @@ class onReady {
   String name = 'onReady';
 
   bind(self) {
-    print("[Event Loaded] --> onReady");
+    print("[Event Loaded] --> $name");
 
     self.eventsWs.onReady.listen((e) {
       print(

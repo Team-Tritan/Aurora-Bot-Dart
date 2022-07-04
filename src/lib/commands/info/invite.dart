@@ -7,7 +7,7 @@ class InviteCommand {
   String category = "info";
   String description = "Get the invite link for this bot.";
 
-  execute(self) {
+  execute(bot) {
     final data = SlashCommandBuilder("$name", "$description", [])
       ..registerHandler((event) async {
         print(event);
@@ -20,7 +20,7 @@ class InviteCommand {
         await event.respond(MessageBuilder.content('$invite'));
       });
 
-    IInteractions.create(WebsocketInteractionBackend(self))
+    IInteractions.create(WebsocketInteractionBackend(bot))
       ..registerSlashCommand(data)
       ..syncOnReady();
   }

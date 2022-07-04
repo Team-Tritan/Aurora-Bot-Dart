@@ -6,7 +6,7 @@ class onMessageReceived {
   String name = 'onMessageReceived';
 
   bind(self) {
-    print("[Event Loaded] --> onMessageReceived");
+    print("[Event Loaded] --> $name");
 
     self.eventsWs.onMessageReceived.listen((e) {
       final prefix = CONFIG.default_prefix;

@@ -7,15 +7,20 @@ class HelpCommand {
   String description = "The help command for this bot.";
 
   execute(self) {
-    final data = SlashCommandBuilder("$name", "$description", [])
-      ..registerHandler((event) async {
-        print(event);
+    print("[Command Ran] --> $name");
 
-        await event.respond(MessageBuilder.content("Work in progress."));
+    final command = SlashCommandBuilder("$name", "$description", [])
+      ..registerHandler((event) async {
+        final embed = EmbedBuilder()
+          ..title = 'Dart Bot'
+          ..description = 'Suck my nuts bozo'
+          ..color = '#5865F2' as DiscordColor?;
+
+        await event.respond(MessageBuilder.embed(embed));
       });
 
     IInteractions.create(WebsocketInteractionBackend(self))
-      ..registerSlashCommand(data)
+      ..registerSlashCommand(command)
       ..syncOnReady();
   }
 }
