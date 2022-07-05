@@ -1,8 +1,8 @@
 import 'package:nyxx/nyxx.dart';
+import 'package:hive/hive.dart';
 import './config.dart';
-import 'lib/handlers/registerInteractions.dart';
+import './lib/handlers/registerInteractions.dart';
 import './lib/handlers/registerEvents.dart';
-import './lib/utils/database.dart';
 
 late INyxxWebsocket client;
 
@@ -21,5 +21,6 @@ void main() {
 
   registerEvents(client);
   registerInteractions(client);
-  initDatabase(client);
+
+  Hive.init('./database');
 }

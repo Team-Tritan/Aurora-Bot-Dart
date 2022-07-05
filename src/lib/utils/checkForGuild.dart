@@ -1,5 +1,6 @@
 import "package:nyxx/nyxx.dart";
 
+// if command shows dm_disabled in command class, checks for guild and if no guild, returns message.
 checkForGuild(event) {
   if (event.interaction.guild == null) {
     var baseEmbed = EmbedBuilder()

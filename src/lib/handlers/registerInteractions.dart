@@ -1,7 +1,6 @@
 library registerCommands;
 
 import 'dart:async';
-import '../commands/utility/eval.dart';
 import '../commands/fun/coinflip.dart';
 import '../commands/info/help.dart';
 import '../commands/info/invite.dart';
@@ -21,7 +20,6 @@ Future<void> registerInteractions(client) async {
   CoinFlipCommand().execute(client);
   BookmarkCommand().execute(client);
   AFKCommand().execute(client);
-  EvalCommand().execute(client);
 
   interactionsWS.syncOnReady();
 }
