@@ -5,6 +5,7 @@ checkForGuild(event) {
     var baseEmbed = EmbedBuilder()
       ..addAuthor((author) {
         author.name = 'Aurora Bot';
+        author.iconUrl = '';
       })
       ..title = ':x: Command Failed'
       ..description =
