@@ -7,10 +7,10 @@ import '../../handlers/registerInteractions.dart' show interactionsWS;
 class AFKCommand {
   String name = "afk";
   String category = "utility";
-  String description = "Set yourself as AFK in the server.";
-  bool dm_disabled = true;
+  String description = "Set yourself as AFK in all servers.";
+  bool dm_disabled = false;
 
-  late final EmbedBuilder bookmarkEmbed;
+  late final EmbedBuilder baseEmbed;
   late final IMessage message;
 
   execute(client) {
@@ -41,7 +41,7 @@ class AFKCommand {
           print(
               '[AFK] Added AFK status to ${event.interaction.userAuthor?.id.toString()}');
 
-          var success = EmbedBuilder()
+          baseEmbed = EmbedBuilder()
             ..addAuthor((author) {
               author.name = 'Aurora Bot';
             })
@@ -55,12 +55,12 @@ class AFKCommand {
               footer.iconUrl = event.interaction.userAuthor?.avatarURL();
             });
 
-          return event.respond(MessageBuilder.embed(success));
+          return event.respond(MessageBuilder.embed(baseEmbed));
         } else {
           var box = await Hive.openBox('AFKs');
           var isAFK = box.get(event.interaction.userAuthor?.id.toString());
 
-          var already = EmbedBuilder()
+          baseEmbed = EmbedBuilder()
             ..addAuthor((author) {
               author.name = 'Aurora Bot';
             })
@@ -75,7 +75,7 @@ class AFKCommand {
               footer.iconUrl = event.interaction.userAuthor?.avatarURL();
             });
 
-          return event.respond(MessageBuilder.embed(already));
+          return event.respond(MessageBuilder.embed(baseEmbed));
         }
       });
     interactionsWS..registerSlashCommand(data);

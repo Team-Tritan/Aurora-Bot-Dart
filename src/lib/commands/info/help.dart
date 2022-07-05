@@ -9,6 +9,8 @@ class HelpCommand {
   String description = "The help command for this bot.";
   bool dm_disabled = false;
 
+  late final EmbedBuilder baseEmbed;
+
   execute(client) {
     print("[Command Ran] --> $name");
 
@@ -18,7 +20,7 @@ class HelpCommand {
 
         await event.acknowledge();
 
-        final embed = EmbedBuilder()
+        baseEmbed = EmbedBuilder()
           ..addAuthor((author) {
             author.name = 'Aurora Bot';
           })
@@ -32,7 +34,7 @@ class HelpCommand {
             footer.iconUrl = event.interaction.userAuthor?.avatarURL();
           });
 
-        await event.respond(MessageBuilder.embed(embed));
+        await event.respond(MessageBuilder.embed(baseEmbed));
       });
 
     interactionsWS..registerSlashCommand(data);

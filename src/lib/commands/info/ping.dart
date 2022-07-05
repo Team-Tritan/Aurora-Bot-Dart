@@ -10,6 +10,8 @@ class PingCommand {
   String description = "Get the websocket latency of the bot.";
   bool dm_disabled = false;
 
+  late final EmbedBuilder baseEmbed;
+
   execute(client) {
     print("[Command Ran] --> $name");
 
@@ -33,7 +35,7 @@ class PingCommand {
         final apiLatency = apiStopwatch.elapsedMilliseconds;
         apiStopwatch.stop();
 
-        final latencyEmbed = EmbedBuilder()
+        baseEmbed = EmbedBuilder()
           ..addAuthor((author) {
             author.name = 'Aurora Bot';
           })
@@ -56,15 +58,15 @@ class PingCommand {
 
         final messageStopwatch = Stopwatch()..start();
         final message =
-            await event.sendFollowup(MessageBuilder.embed(latencyEmbed));
+            await event.sendFollowup(MessageBuilder.embed(baseEmbed));
 
-        latencyEmbed.replaceField(
+        baseEmbed.replaceField(
           name: 'Message latency',
           content: '${messageStopwatch.elapsedMilliseconds} ms',
           inline: false,
         );
 
-        await message.edit(MessageBuilder.embed(latencyEmbed));
+        await message.edit(MessageBuilder.embed(baseEmbed));
         messageStopwatch.stop();
       });
 

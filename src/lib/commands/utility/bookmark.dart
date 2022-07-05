@@ -9,7 +9,7 @@ class BookmarkCommand {
   String description = "Bookmark a message from a server to your dms!";
   bool dm_disabled = true;
 
-  late final EmbedBuilder bookmarkEmbed;
+  late final EmbedBuilder baseEmbed;
 
   execute(client) {
     print("[Command Ran] --> $name");
@@ -37,7 +37,7 @@ class BookmarkCommand {
           message = event.interaction.resolved!.messages.first;
         }
 
-        bookmarkEmbed = EmbedBuilder()
+        baseEmbed = EmbedBuilder()
           ..addAuthor((author) {
             author.name = 'Aurora Bot';
           })
@@ -56,7 +56,7 @@ class BookmarkCommand {
             footer.iconUrl = event.interaction.userAuthor?.avatarURL();
           });
 
-        await event.sendFollowup(MessageBuilder.embed(bookmarkEmbed));
+        await event.sendFollowup(MessageBuilder.embed(baseEmbed));
 
         final componentMessageBuilder = ComponentMessageBuilder();
         final componentRow = ComponentRowBuilder()
@@ -80,7 +80,7 @@ class BookmarkCommand {
     await event.acknowledge();
     final author = event.interaction.userAuthor;
 
-    await author?.sendMessage(MessageBuilder.embed(bookmarkEmbed)) ??
+    await author?.sendMessage(MessageBuilder.embed(baseEmbed)) ??
         await event.respond(
           MessageBuilder.content(
             "Your DM's are closed! The bookmarked message cannot be sent!",

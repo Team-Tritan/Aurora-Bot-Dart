@@ -8,6 +8,8 @@ class CoinFlipCommand {
   String category = "fun";
   String description = "A super awesome coin flip command.";
 
+  late final EmbedBuilder baseEmbed;
+
   execute(client) {
     print("[Command Ran] --> $name");
 
@@ -17,7 +19,7 @@ class CoinFlipCommand {
 
         final result = Random().nextBool() ? "tail" : "heads";
 
-        final embed = EmbedBuilder()
+        baseEmbed = EmbedBuilder()
           ..addAuthor((author) {
             author.name = 'Aurora Bot';
           })
@@ -31,7 +33,7 @@ class CoinFlipCommand {
             footer.iconUrl = event.interaction.userAuthor?.avatarURL();
           });
 
-        await event.respond(MessageBuilder.embed(embed));
+        await event.respond(MessageBuilder.embed(baseEmbed));
       });
 
     interactionsWS..registerSlashCommand(data);

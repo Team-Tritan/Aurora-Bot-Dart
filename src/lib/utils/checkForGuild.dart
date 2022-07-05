@@ -1,12 +1,11 @@
 import "package:nyxx/nyxx.dart";
 
 // if command shows dm_disabled in command class, checks for guild and if no guild, returns message.
-checkForGuild(event) {
+void checkForGuild(event) {
   if (event.interaction.guild == null) {
     var baseEmbed = EmbedBuilder()
       ..addAuthor((author) {
         author.name = 'Aurora Bot';
-        author.iconUrl = '';
       })
       ..title = ':x: Command Failed'
       ..description =
