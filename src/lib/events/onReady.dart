@@ -4,21 +4,14 @@ import 'dart:async';
 import '../../config.dart';
 import '../../bot.dart' show client;
 
-Future<void> onReady(event) async {
-  client.setPresence(
-    PresenceBuilder.of(
-      status: UserStatus.dnd,
-      activity: ActivityBuilder.watching('hello world!'),
-    ),
-  );
-
-  setStatusTimer(client);
-}
-
 bool isStopped = false;
 
-setStatusTimer(client) {
-  Timer.periodic(Duration(minutes: 10), (timer) {
+Future<void> onReady(event) async {
+  await setStatusTimer(client);
+}
+
+setStatusTimer(client) async {
+  Timer.periodic(Duration(minutes: 20), (timer) {
     if (isStopped) {
       timer.cancel();
     }
