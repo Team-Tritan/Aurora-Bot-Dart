@@ -1,11 +1,9 @@
-import 'dart:html';
-
 import 'package:nyxx_interactions/nyxx_interactions.dart';
 import 'package:nyxx/nyxx.dart';
 import '../../utils/checkForGuild.dart';
 import '../../handlers/registerInteractions.dart' show interactionsWS;
 
-class BookmarkCommand {
+class AFKCommand {
   String name = "afk";
   String category = "utility";
   String description = "Set yourself as AFK in the server.";
