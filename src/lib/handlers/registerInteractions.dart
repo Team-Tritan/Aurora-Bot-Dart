@@ -1,10 +1,12 @@
 library registerCommands;
 
 import 'dart:async';
+import '../commands/utility/eval.dart';
 import '../commands/fun/coinflip.dart';
 import '../commands/info/help.dart';
 import '../commands/info/invite.dart';
 import '../commands/info/ping.dart';
+import '../commands/utility/afk.dart';
 import '../commands/utility/bookmark.dart';
 import 'package:nyxx_interactions/nyxx_interactions.dart';
 
@@ -18,6 +20,8 @@ Future<void> registerInteractions(client) async {
   InviteCommand().execute(client);
   CoinFlipCommand().execute(client);
   BookmarkCommand().execute(client);
+  AFKCommand().execute(client);
+  EvalCommand().execute(client);
 
   interactionsWS.syncOnReady();
 }
