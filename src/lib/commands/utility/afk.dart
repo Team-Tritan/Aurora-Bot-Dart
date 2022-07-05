@@ -39,7 +39,7 @@ class AFKCommand {
               {'active': true, 'reason': '${reason}'});
 
           print(
-              '[AFK] Added AFK status to ${event.interaction.userAuthor?.id.toString()}');
+              '[AFK] AFK enabled for ${event.interaction.userAuthor?.username.toString()}.');
 
           baseEmbed = EmbedBuilder()
             ..addAuthor((author) {

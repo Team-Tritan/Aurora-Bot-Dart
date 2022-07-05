@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import "package:nyxx/nyxx.dart";
 
 // Checks if AFK is enabled for user, then disables when a message is sent.
 void disableAFK(client, message) async {
@@ -7,6 +8,20 @@ void disableAFK(client, message) async {
 
   if (isAFK != null) {
     await box.delete(message.author.id.toString());
-    print('[AFK] Removed AFK status from ${message.author.id}');
+    print('[AFK] Disabled AFK for ${message.author.id.toString()}.');
+
+    var baseEmbed = EmbedBuilder()
+      ..addAuthor((author) {
+        author.name = 'Aurora Bot';
+      })
+      ..title = 'AFK Disabled'
+      ..color = DiscordColor.fromHexString("#5865F2")
+      ..timestamp = DateTime.now()
+      ..addFooter((footer) {
+        footer.text = 'Requested by ${message.author.username}';
+        footer.iconUrl = message.author.avatarURL();
+      });
+
+    return message.channel.sendMessage(MessageBuilder.embed(baseEmbed));
   }
 }
