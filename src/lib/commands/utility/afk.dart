@@ -46,7 +46,7 @@ class AFKCommand {
               author.name = 'Aurora Bot';
             })
             ..title = 'AFK Enabled'
-            ..description = 'You have marked yourself as AFK for `$reason`.'
+            ..description = 'You have marked yourself as AFK because `$reason`.'
             ..color = DiscordColor.fromHexString("#5865F2")
             ..timestamp = DateTime.now()
             ..addFooter((footer) {
