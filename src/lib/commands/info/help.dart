@@ -24,10 +24,12 @@ class HelpCommand {
           ..addAuthor((author) {
             author.name = 'Aurora Bot';
           })
-          ..title = 'Help'
-          ..description = 'Suck my nuts bozo, coming soon.'
+          ..title = 'Command Help'
           ..color = DiscordColor.fromHexString("#5865F2")
           ..timestamp = DateTime.now()
+          ..addField(name: 'Info Commands', content: 'help, invite, ping')
+          ..addField(name: 'Fun Commands', content: 'coinflip')
+          ..addField(name: 'Utility Commands', content: 'bookmark, afk')
           ..addFooter((footer) {
             footer.text =
                 'Requested by ${event.interaction.userAuthor?.username}';
