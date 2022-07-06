@@ -42,11 +42,8 @@ class AFKCommand {
               '[AFK] AFK enabled for ${event.interaction.userAuthor?.username.toString()}.');
 
           baseEmbed = EmbedBuilder()
-            ..addAuthor((author) {
-              author.name = 'Aurora Bot';
-            })
             ..title = 'AFK Enabled'
-            ..description = 'You have marked yourself as AFK because `$reason`.'
+            ..description = '```${reason}```'
             ..color = DiscordColor.fromHexString("#5865F2")
             ..timestamp = DateTime.now()
             ..addFooter((footer) {

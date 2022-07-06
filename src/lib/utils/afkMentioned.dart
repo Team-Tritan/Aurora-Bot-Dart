@@ -15,11 +15,11 @@ void afkMentioned(client, message) async {
         ..addAuthor((author) {
           author.name = 'Aurora Bot';
         })
-        ..title = 'AFK'
+        ..title = 'User is AFK'
         ..description =
-            'The user you mentioned is currently AFK, the reason is `' +
+            'The user you mentioned is currently AFK, the reason listed is listed below. ```' +
                 isAFK['reason'] +
-                '`.'
+                '```'
         ..color = DiscordColor.fromHexString("#5865F2")
         ..timestamp = DateTime.now()
         ..addFooter((footer) {

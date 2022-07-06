@@ -11,16 +11,8 @@ void disableAFK(client, message) async {
     print('[AFK] Disabled AFK for ${message.author.id.toString()}.');
 
     var baseEmbed = EmbedBuilder()
-      ..addAuthor((author) {
-        author.name = 'Aurora Bot';
-      })
       ..title = 'AFK Disabled'
-      ..color = DiscordColor.fromHexString("#5865F2")
-      ..timestamp = DateTime.now()
-      ..addFooter((footer) {
-        footer.text = 'Requested by ${message.author.username}';
-        footer.iconUrl = message.author.avatarURL();
-      });
+      ..color = DiscordColor.fromHexString("#5865F2");
 
     return message.channel.sendMessage(MessageBuilder.embed(baseEmbed));
   }
