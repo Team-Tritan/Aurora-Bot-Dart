@@ -10,7 +10,6 @@ class AFKCommand {
   String description = "Set yourself as AFK in all servers.";
   bool dm_disabled = false;
 
-  late final EmbedBuilder baseEmbed;
   late final IMessage message;
 
   execute(client) {
@@ -41,7 +40,7 @@ class AFKCommand {
           print(
               '[AFK] AFK enabled for ${event.interaction.userAuthor?.username.toString()}.');
 
-          baseEmbed = EmbedBuilder()
+          var baseEmbed = EmbedBuilder()
             ..title = 'AFK Enabled'
             ..description = '```${reason}```'
             ..color = DiscordColor.fromHexString("#5865F2")
@@ -57,7 +56,7 @@ class AFKCommand {
           var box = await Hive.openBox('AFKs');
           var isAFK = box.get(event.interaction.userAuthor?.id.toString());
 
-          baseEmbed = EmbedBuilder()
+          var baseEmbed2 = EmbedBuilder()
             ..addAuthor((author) {
               author.name = 'Aurora Bot';
             })
@@ -72,7 +71,7 @@ class AFKCommand {
               footer.iconUrl = event.interaction.userAuthor?.avatarURL();
             });
 
-          return event.respond(MessageBuilder.embed(baseEmbed));
+          return event.respond(MessageBuilder.embed(baseEmbed2));
         }
       });
     interactionsWS..registerSlashCommand(data);

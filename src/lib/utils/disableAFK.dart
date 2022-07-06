@@ -10,10 +10,12 @@ void disableAFK(client, message) async {
     await box.delete(message.author.id.toString());
     print('[AFK] Disabled AFK for ${message.author.id.toString()}.');
 
+/** 
     var baseEmbed = EmbedBuilder()
       ..title = 'AFK Disabled'
       ..color = DiscordColor.fromHexString("#5865F2");
 
     return message.channel.sendMessage(MessageBuilder.embed(baseEmbed));
+ */
   }
 }
