@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:nyxx/nyxx.dart';
 import "dart:math";
 import 'dart:async';
