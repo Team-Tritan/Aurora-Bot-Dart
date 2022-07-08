@@ -1,7 +1,7 @@
 import 'package:nyxx_interactions/nyxx_interactions.dart';
 import 'package:nyxx/nyxx.dart';
-import '../../handlers/registerInteractions.dart' show interactionsWS;
-import '../../utils/checkForGuild.dart';
+import '../../handlers/register_interactions.dart' show interactionsWS;
+import '../../utils/check_for_guild.dart';
 
 class BookmarkCommand {
   String name = "bookmark";
@@ -9,12 +9,13 @@ class BookmarkCommand {
   String description = "Bookmark a message from a server to your dms!";
   bool dm_disabled = true;
 
-  late final EmbedBuilder baseEmbed;
+  late final EmbedBuilder
+      baseEmbed; // needs to be  class-wide for button handlers
 
-  execute(client) {
+  register(client) {
     print("[Command Ran] --> $name");
 
-    final data = SlashCommandBuilder("$name", "$description", [
+    final command = SlashCommandBuilder(name, description, [
       CommandOptionBuilder(
         CommandOptionType.string,
         'id',
@@ -22,7 +23,7 @@ class BookmarkCommand {
         required: true,
       )
     ])
-      ..registerHandler((event) async {
+      ..registerHandler((ISlashCommandInteractionEvent event) async {
         late final IMessage message;
 
         if (dm_disabled) checkForGuild(event);
@@ -70,7 +71,7 @@ class BookmarkCommand {
       });
 
     interactionsWS
-      ..registerSlashCommand(data)
+      ..registerSlashCommand(command)
       ..registerButtonHandler('add-bm-button', addButtonHandler)
       ..registerButtonHandler('delete-bm-button', deleteButtonHandler);
     ;

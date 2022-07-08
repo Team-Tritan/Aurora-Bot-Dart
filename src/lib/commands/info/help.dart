@@ -1,7 +1,7 @@
 import "package:nyxx/nyxx.dart";
 import "package:nyxx_interactions/nyxx_interactions.dart";
-import '../../handlers/registerInteractions.dart';
-import '../../utils/checkForGuild.dart';
+import '../../handlers/register_interactions.dart';
+import '../../utils/check_for_guild.dart';
 
 class HelpCommand {
   String name = "help";
@@ -9,13 +9,13 @@ class HelpCommand {
   String description = "The help command for this bot.";
   bool dm_disabled = false;
 
-  late final EmbedBuilder baseEmbed;
+  register(client) {
+    late final EmbedBuilder baseEmbed;
 
-  execute(client) {
     print("[Command Ran] --> $name");
 
-    final data = SlashCommandBuilder("$name", "$description", [])
-      ..registerHandler((event) async {
+    final command = SlashCommandBuilder(name, description, [])
+      ..registerHandler((ISlashCommandInteractionEvent event) async {
         if (dm_disabled) checkForGuild(event);
 
         await event.acknowledge();
@@ -39,6 +39,6 @@ class HelpCommand {
         await event.respond(MessageBuilder.embed(baseEmbed));
       });
 
-    interactionsWS..registerSlashCommand(data);
+    interactionsWS..registerSlashCommand(command);
   }
 }

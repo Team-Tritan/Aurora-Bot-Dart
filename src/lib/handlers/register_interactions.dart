@@ -14,12 +14,12 @@ late IInteractions interactionsWS;
 Future<void> registerInteractions(client) async {
   interactionsWS = IInteractions.create(WebsocketInteractionBackend(client));
 
-  HelpCommand().execute(client);
-  PingCommand().execute(client);
-  InviteCommand().execute(client);
-  CoinFlipCommand().execute(client);
-  BookmarkCommand().execute(client);
-  AFKCommand().execute(client);
+  HelpCommand().register(client);
+  PingCommand().register(client);
+  InviteCommand().register(client);
+  CoinFlipCommand().register(client);
+  BookmarkCommand().register(client);
+  AFKCommand().register(client);
 
   interactionsWS.syncOnReady();
 }

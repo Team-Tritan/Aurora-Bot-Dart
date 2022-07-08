@@ -1,8 +1,8 @@
 import 'package:nyxx_interactions/nyxx_interactions.dart';
 import 'package:nyxx/nyxx.dart';
 import 'package:hive/hive.dart';
-import '../../utils/checkForGuild.dart';
-import '../../handlers/registerInteractions.dart' show interactionsWS;
+import '../../utils/check_for_guild.dart';
+import '../../handlers/register_interactions.dart' show interactionsWS;
 
 class AFKCommand {
   String name = "afk";
@@ -10,12 +10,10 @@ class AFKCommand {
   String description = "Set yourself as AFK in all servers.";
   bool dm_disabled = false;
 
-  late final IMessage message;
-
-  execute(client) {
+  register(client) {
     print("[Command Ran] --> $name");
 
-    final data = SlashCommandBuilder('$name', '$description', [
+    final command = SlashCommandBuilder(name, description, [
       CommandOptionBuilder(
         CommandOptionType.string,
         'reason',
@@ -23,7 +21,7 @@ class AFKCommand {
         required: true,
       )
     ])
-      ..registerHandler((event) async {
+      ..registerHandler((ISlashCommandInteractionEvent event) async {
         if (dm_disabled) checkForGuild(event);
 
         await event.acknowledge();
@@ -74,6 +72,6 @@ class AFKCommand {
           return event.respond(MessageBuilder.embed(baseEmbed2));
         }
       });
-    interactionsWS..registerSlashCommand(data);
+    interactionsWS..registerSlashCommand(command);
   }
 }

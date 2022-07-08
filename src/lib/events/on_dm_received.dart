@@ -1,6 +1,6 @@
 import 'package:nyxx/nyxx.dart';
 import '../../config.dart';
-import '../../bot.dart' show client;
+import '../../bin/bot.dart' show client;
 
 Future<void> onDmReceived(IMessageReceivedEvent event) async {
   final owner = await client.fetchUser(Snowflake(CONFIG.ownerID));

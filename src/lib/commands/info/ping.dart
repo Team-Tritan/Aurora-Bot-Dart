@@ -1,8 +1,8 @@
 import 'package:http/http.dart' as http;
 import "package:nyxx/nyxx.dart";
 import "package:nyxx_interactions/nyxx_interactions.dart";
-import '../../handlers/registerInteractions.dart';
-import '../../utils/checkForGuild.dart';
+import '../../handlers/register_interactions.dart';
+import '../../utils/check_for_guild.dart';
 
 class PingCommand {
   String name = "ping";
@@ -10,13 +10,12 @@ class PingCommand {
   String description = "Get the websocket latency of the bot.";
   bool dm_disabled = false;
 
-  late final EmbedBuilder baseEmbed;
-
-  execute(client) {
+  register(client) {
+    late final EmbedBuilder baseEmbed;
     print("[Command Ran] --> $name");
 
-    final data = SlashCommandBuilder("$name", "$description", [])
-      ..registerHandler((event) async {
+    final command = SlashCommandBuilder(name, description, [])
+      ..registerHandler((ISlashCommandInteractionEvent event) async {
         if (dm_disabled) checkForGuild(event);
 
         await event.acknowledge();
@@ -70,6 +69,6 @@ class PingCommand {
         messageStopwatch.stop();
       });
 
-    interactionsWS..registerSlashCommand(data);
+    interactionsWS..registerSlashCommand(command);
   }
 }

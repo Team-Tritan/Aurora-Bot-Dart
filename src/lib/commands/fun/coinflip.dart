@@ -1,20 +1,20 @@
 import 'dart:math';
 import "package:nyxx/nyxx.dart";
 import "package:nyxx_interactions/nyxx_interactions.dart";
-import '../../handlers/registerInteractions.dart';
+import '../../handlers/register_interactions.dart';
 
 class CoinFlipCommand {
   String name = "coinflip";
   String category = "fun";
   String description = "A super awesome coin flip command.";
 
-  late final EmbedBuilder baseEmbed;
+  register(client) {
+    late final EmbedBuilder baseEmbed;
 
-  execute(client) {
     print("[Command Ran] --> $name");
 
-    final data = SlashCommandBuilder("$name", "$description", [])
-      ..registerHandler((event) async {
+    final command = SlashCommandBuilder(name, description, [])
+      ..registerHandler((ISlashCommandInteractionEvent event) async {
         await event.acknowledge();
 
         final result = Random().nextBool() ? "tail" : "heads";
@@ -36,6 +36,6 @@ class CoinFlipCommand {
         await event.respond(MessageBuilder.embed(baseEmbed));
       });
 
-    interactionsWS..registerSlashCommand(data);
+    interactionsWS..registerSlashCommand(command);
   }
 }

@@ -1,8 +1,8 @@
 library registerEvents;
 
-import '../events/onDmReceived.dart';
-import '../events/onMessageReceived.dart';
-import '../events/onReady.dart';
+import '../events/on_dm_received.dart';
+import '../events/on_message_received.dart';
+import '../events/on_ready.dart';
 
 Future<void> registerEvents(client) async {
   client.eventsWs.onReady.listen(onReady);

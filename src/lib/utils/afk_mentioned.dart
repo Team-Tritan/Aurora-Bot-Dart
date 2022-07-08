@@ -23,7 +23,7 @@ void afkMentioned(client, message) async {
         ..color = DiscordColor.fromHexString("#5865F2")
         ..timestamp = DateTime.now()
         ..addFooter((footer) {
-          footer.text = 'Requested by ${message.author.username}';
+          footer.text = 'Pinged by ${message.author.username}';
           footer.iconUrl = message.author.avatarURL();
         });
 
