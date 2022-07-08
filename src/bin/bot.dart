@@ -1,26 +1,24 @@
 import 'package:nyxx/nyxx.dart';
 import 'package:hive/hive.dart';
-import './config.dart';
-import './lib/handlers/registerInteractions.dart';
-import './lib/handlers/registerEvents.dart';
+import '../config.dart';
+import '../lib/handlers/register_interactions.dart';
+import '../lib/handlers/register_events.dart';
 
 late INyxxWebsocket client;
 
-void main() {
+void main() async {
   client = NyxxFactory.createNyxxWebsocket(
     CONFIG.token,
     CONFIG.intents,
-    options: ClientOptions(
-      dispatchRawShardEvent: true,
-    ),
   )
     ..registerPlugin(Logging())
     ..registerPlugin(CliIntegration())
-    ..registerPlugin(IgnoreExceptions())
-    ..connect();
+    ..registerPlugin(IgnoreExceptions());
 
   registerEvents(client);
   registerInteractions(client);
 
-  Hive.init('./database');
+  Hive.init('../../database');
+
+  await client.connect();
 }
