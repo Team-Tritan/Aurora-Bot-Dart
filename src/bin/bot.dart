@@ -17,6 +17,7 @@ void main() async {
 
   registerEvents(client);
   registerInteractions(client);
+  registerModules(client);
 
   Hive.init('../../database');
 
