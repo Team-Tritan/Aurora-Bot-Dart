@@ -30,6 +30,7 @@ class HelpCommand {
           ..addField(name: 'Info Commands', content: 'help, invite, ping')
           ..addField(name: 'Fun Commands', content: 'coinflip')
           ..addField(name: 'Utility Commands', content: 'bookmark, afk')
+          ..addField(name: 'Bot Settings', content: 'logging')
           ..addFooter((footer) {
             footer.text =
                 'Requested by ${event.interaction.userAuthor?.username}';

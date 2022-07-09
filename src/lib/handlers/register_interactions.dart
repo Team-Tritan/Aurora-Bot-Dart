@@ -1,6 +1,7 @@
 library registerCommands;
 
 import 'dart:async';
+import '../commands/config/logging.dart';
 import '../commands/fun/coinflip.dart';
 import '../commands/info/help.dart';
 import '../commands/info/invite.dart';
@@ -21,6 +22,7 @@ Future<void> registerInteractions(INyxxWebsocket client) async {
   CoinFlipCommand().register(client);
   BookmarkCommand().register(client);
   AFKCommand().register(client);
+  LoggingCommand().register(client);
 
   interactionsWS.syncOnReady();
 }
