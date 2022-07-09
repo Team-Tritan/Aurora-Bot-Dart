@@ -12,7 +12,7 @@ class BookmarkCommand {
   late final EmbedBuilder
       baseEmbed; // needs to be  class-wide for button handlers
 
-  register(client) {
+  register(INyxxWebsocket client) {
     print("[Command Ran] --> $name");
 
     final command = SlashCommandBuilder(name, description, [

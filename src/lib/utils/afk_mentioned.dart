@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 import "package:nyxx/nyxx.dart";
 
-void afkMentioned(client, message) async {
+void afkMentioned(INyxxWebsocket client, message) async {
   final mentioned = message.mentions == null || message.mentions.isEmpty
       ? null
       : message.mentions.first;

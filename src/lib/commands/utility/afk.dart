@@ -10,7 +10,7 @@ class AFKCommand {
   String description = "Set yourself as AFK in all servers.";
   bool dm_disabled = false;
 
-  register(client) {
+  register(INyxxWebsocket client) {
     print("[Command Ran] --> $name");
 
     final command = SlashCommandBuilder(name, description, [

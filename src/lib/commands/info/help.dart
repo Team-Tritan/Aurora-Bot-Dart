@@ -9,7 +9,7 @@ class HelpCommand {
   String description = "The help command for this bot.";
   bool dm_disabled = false;
 
-  register(client) {
+  register(INyxxWebsocket client) {
     late final EmbedBuilder baseEmbed;
 
     print("[Command Ran] --> $name");

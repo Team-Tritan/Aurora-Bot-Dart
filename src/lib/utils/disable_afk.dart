@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 import "package:nyxx/nyxx.dart";
 
 // Checks if AFK is enabled for user, then disables when a message is sent.
-void disableAFK(client, message) async {
+void disableAFK(INyxxWebsocket client, message) async {
   final box = await Hive.openBox('AFKs');
   final isAFK = box.get(message.author.id.toString());
 

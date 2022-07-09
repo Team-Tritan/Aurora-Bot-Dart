@@ -9,7 +9,7 @@ class InviteCommand {
   String description = "Get the invite link for this bot.";
   bool dm_disabled = false;
 
-  register(client) {
+  register(INyxxWebsocket client) {
     print("[Command Ran] --> $name");
 
     final command = SlashCommandBuilder(name, description, [])

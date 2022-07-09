@@ -8,7 +8,7 @@ class CoinFlipCommand {
   String category = "fun";
   String description = "A super awesome coin flip command.";
 
-  register(client) {
+  register(INyxxWebsocket client) {
     late final EmbedBuilder baseEmbed;
 
     print("[Command Ran] --> $name");

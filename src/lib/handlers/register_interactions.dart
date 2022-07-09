@@ -8,10 +8,11 @@ import '../commands/info/ping.dart';
 import '../commands/utility/afk.dart';
 import '../commands/utility/bookmark.dart';
 import 'package:nyxx_interactions/nyxx_interactions.dart';
+import 'package:nyxx/nyxx.dart';
 
 late IInteractions interactionsWS;
 
-Future<void> registerInteractions(client) async {
+Future<void> registerInteractions(INyxxWebsocket client) async {
   interactionsWS = IInteractions.create(WebsocketInteractionBackend(client));
 
   HelpCommand().register(client);

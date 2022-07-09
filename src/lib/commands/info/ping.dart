@@ -10,7 +10,7 @@ class PingCommand {
   String description = "Get the websocket latency of the bot.";
   bool dm_disabled = false;
 
-  register(client) {
+  register(INyxxWebsocket client) {
     late final EmbedBuilder baseEmbed;
     print("[Command Ran] --> $name");
 
