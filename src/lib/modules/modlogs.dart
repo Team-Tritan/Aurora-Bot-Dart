@@ -13,17 +13,14 @@ Future<void> onDelete(event) async {
   var modlog_id = guild_settings['channel'];
 
   final logger = EmbedBuilder()
-    ..addAuthor((author) {
-      author.name = 'Aurora Bot';
+    ..addAuthor((x) {
+      x.name = author_tag;
+      x.iconUrl = author.avatarURL();
     })
     ..title = 'Message Deleted'
-    ..description = 'Content: ```$content```'
+    ..description = '**Content:** ```$content```'
     ..color = DiscordColor.fromHexString("#5865F2")
-    ..timestamp = DateTime.now()
-    ..addFooter((footer) {
-      footer.text = 'Author: ${author_tag}';
-      footer.iconUrl = author.avatarURL();
-    });
+    ..timestamp = DateTime.now();
 
   final ch = await client.fetchChannel(Snowflake(modlog_id)) as ITextChannel;
   await ch.sendMessage(MessageBuilder.embed(logger));
