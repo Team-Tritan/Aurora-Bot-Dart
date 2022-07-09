@@ -41,6 +41,7 @@ class BookmarkCommand {
         baseEmbed = EmbedBuilder()
           ..addAuthor((author) {
             author.name = 'Aurora Bot';
+            author.iconUrl = client.self.avatarURL();
           })
           ..title = 'Bookmarked message'
           ..description = message.content.isNotEmpty ? message.content : null

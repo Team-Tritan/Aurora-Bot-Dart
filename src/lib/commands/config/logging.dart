@@ -43,6 +43,7 @@ class LoggingCommand {
         final embed = EmbedBuilder()
           ..addAuthor((author) {
             author.name = 'Aurora Bot';
+            author.iconUrl = client.self.avatarURL();
           })
           ..title = 'Bot Settings Updated'
           ..description = 'Server logs have been enabled for <#$channel>.'

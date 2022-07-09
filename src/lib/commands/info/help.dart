@@ -23,6 +23,7 @@ class HelpCommand {
         baseEmbed = EmbedBuilder()
           ..addAuthor((author) {
             author.name = 'Aurora Bot';
+            author.iconUrl = client.self.avatarURL();
           })
           ..title = 'Command Help'
           ..color = DiscordColor.fromHexString("#5865F2")

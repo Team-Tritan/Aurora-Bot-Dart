@@ -39,6 +39,10 @@ class AFKCommand {
               '[AFK] AFK enabled for ${event.interaction.userAuthor?.username.toString()}.');
 
           var baseEmbed = EmbedBuilder()
+            ..addAuthor((author) {
+              author.name = 'Aurora Bot';
+              author.iconUrl = client.self.avatarURL();
+            })
             ..title = 'AFK Enabled'
             ..description = '```${reason}```'
             ..color = DiscordColor.fromHexString("#5865F2")
@@ -57,6 +61,7 @@ class AFKCommand {
           var baseEmbed2 = EmbedBuilder()
             ..addAuthor((author) {
               author.name = 'Aurora Bot';
+              author.iconUrl = client.self.avatarURL();
             })
             ..title = ':x: AFK Already Enabled'
             ..description =

@@ -22,6 +22,7 @@ class CoinFlipCommand {
         baseEmbed = EmbedBuilder()
           ..addAuthor((author) {
             author.name = 'Aurora Bot';
+            author.iconUrl = client.self.avatarURL();
           })
           ..title = 'Coin Flip'
           ..description = 'The result is **$result**.'

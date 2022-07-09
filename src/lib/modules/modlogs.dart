@@ -2,7 +2,7 @@ import 'package:nyxx/nyxx.dart';
 import 'package:hive/hive.dart';
 import '../../bin/bot.dart' show client;
 
-Future<void> onDelete(event) async {
+Future<void> message_deleted(event) async {
   final author = event.message.author;
   final guild_id = event.message.guild.id.toString();
   final author_tag = author.tag.toString() + author.discriminator.toString();
@@ -22,6 +22,8 @@ Future<void> onDelete(event) async {
     ..color = DiscordColor.fromHexString("#5865F2")
     ..timestamp = DateTime.now();
 
-  final ch = await client.fetchChannel(Snowflake(modlog_id)) as ITextChannel;
-  await ch.sendMessage(MessageBuilder.embed(logger));
+  final log_channel = await client.fetchChannel(Snowflake(modlog_id)) as ITextChannel;
+  await log_channel.sendMessage(MessageBuilder.embed(logger));
+
+  return;
 }

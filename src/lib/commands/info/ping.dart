@@ -37,6 +37,7 @@ class PingCommand {
         baseEmbed = EmbedBuilder()
           ..addAuthor((author) {
             author.name = 'Aurora Bot';
+            author.iconUrl = client.self.avatarURL();
           })
           ..color = DiscordColor.fromHexString("#5865F2")
           ..title = ':ping_pong: Ping'
