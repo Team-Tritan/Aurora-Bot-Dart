@@ -4,7 +4,7 @@ import '../../bin/bot.dart' show client;
 
 Future<void> message_deleted(event) async {
   final author = event.message.author;
-  final guild_id = event.message.guild.id.toString();
+  final guild_id = event.message.guild?.id.toString();
   final author_tag = author.tag.toString() + author.discriminator.toString();
   final content = event.message.content.toString();
 
@@ -22,8 +22,7 @@ Future<void> message_deleted(event) async {
     ..color = DiscordColor.fromHexString("#5865F2")
     ..timestamp = DateTime.now();
 
-  final log_channel = await client.fetchChannel(Snowflake(modlog_id)) as ITextChannel;
+  final log_channel =
+      await client.fetchChannel(Snowflake(modlog_id)) as ITextChannel;
   await log_channel.sendMessage(MessageBuilder.embed(logger));
-
-  return;
 }

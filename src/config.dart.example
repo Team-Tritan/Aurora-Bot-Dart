@@ -1,0 +1,8 @@
+class CONFIG {
+  static final String token = "";
+  static final int intents = 46823; // All but presence.
+  static final String ownerID = ''; // discord app owner id
+  static final activities = [
+    // Bot status array
+  ]; 
+}
