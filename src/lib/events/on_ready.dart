@@ -8,6 +8,14 @@ final bool isStopped = false;
 final _random = new Random();
 
 Future<void> onReady(event) async {
+  // Initial presence, then interval kicks in
+  client.setPresence(
+    PresenceBuilder.of(
+      status: UserStatus.dnd,
+      activity: ActivityBuilder.watching("ahhhh oooooo mmmmmm"),
+    ),
+  );
+
   setStatusTimer(client);
 }
 
