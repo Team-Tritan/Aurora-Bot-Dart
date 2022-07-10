@@ -2,7 +2,7 @@ import 'package:nyxx/nyxx.dart';
 import 'package:hive/hive.dart';
 import '../../bin/bot.dart' show client;
 
-class Modlogs_Module {
+class ModlogsModule {
   final String module = 'Modlogs';
 
   Future<void> message_deleted(event) async {

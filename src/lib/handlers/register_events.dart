@@ -11,5 +11,5 @@ Future<void> registerEvents(INyxxWebsocket client) async {
 }
 
 Future<void> registerModules(INyxxWebsocket client) async {
-  client.eventsWs.onMessageDelete.listen(Modlogs_Module().message_deleted);
+  client.eventsWs.onMessageDelete.listen(new ModlogsModule().message_deleted);
 }

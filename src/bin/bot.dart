@@ -18,8 +18,8 @@ void main() async {
     ..connect();
 
   registerEvents(client);
-  registerInteractions(client);
   registerModules(client);
+  registerInteractions(client);
 
   Hive.init('../../database');
 }
