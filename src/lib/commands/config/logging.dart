@@ -13,7 +13,7 @@ class LoggingCommand {
   register(INyxxWebsocket client) {
     print("[Command Ran] --> $name");
 
-    final command = SlashCommandBuilder(name, description, [
+    final command = SlashCommandBuilder(this.name, this.description, [
       CommandOptionBuilder(
         CommandOptionType.boolean,
         'enabled',

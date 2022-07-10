@@ -14,7 +14,7 @@ class PingCommand {
     late final EmbedBuilder baseEmbed;
     print("[Command Ran] --> $name");
 
-    final command = SlashCommandBuilder(name, description, [])
+    final command = SlashCommandBuilder(this.name, this.description, [])
       ..registerHandler((ISlashCommandInteractionEvent event) async {
         if (dm_disabled) checkForGuild(event);
 
