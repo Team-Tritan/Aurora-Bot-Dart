@@ -2,7 +2,7 @@ import 'package:nyxx/nyxx.dart';
 import '../events/on_dm_received.dart';
 import '../events/on_message_received.dart';
 import '../events/on_ready.dart';
-import '../modules/modlogs.dart' as modlogs;
+import '../modules/logging.dart' as modlogs;
 
 Future<void> registerEvents(INyxxWebsocket client) async {
   client.eventsWs.onReady.listen(onReady);

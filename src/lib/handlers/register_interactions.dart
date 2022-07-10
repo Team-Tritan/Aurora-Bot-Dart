@@ -16,13 +16,13 @@ late IInteractions interactionsWS;
 Future<void> registerInteractions(INyxxWebsocket client) async {
   interactionsWS = IInteractions.create(WebsocketInteractionBackend(client));
 
-  HelpCommand().register(client);
-  PingCommand().register(client);
-  InviteCommand().register(client);
-  CoinFlipCommand().register(client);
-  BookmarkCommand().register(client);
-  AFKCommand().register(client);
-  LoggingCommand().register(client);
+  new HelpCommand().register(client);
+  new PingCommand().register(client);
+  new InviteCommand().register(client);
+  new CoinFlipCommand().register(client);
+  new BookmarkCommand().register(client);
+  new AFKCommand().register(client);
+  new LoggingCommand().register(client);
 
   interactionsWS.syncOnReady();
 }
