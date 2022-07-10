@@ -1,9 +1,9 @@
+import 'dart:io';
 import "package:nyxx/nyxx.dart";
 import "package:nyxx_interactions/nyxx_interactions.dart";
+import 'package:system_info/system_info.dart';
 import '../../utils/check_for_guild.dart';
 import '../../handlers/register_interactions.dart';
-import 'dart:io';
-import 'package:system_info/system_info.dart';
 
 class StatsCommand {
   String name = "stats";

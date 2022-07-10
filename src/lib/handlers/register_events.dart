@@ -2,7 +2,7 @@ import 'package:nyxx/nyxx.dart';
 import '../events/on_dm_received.dart';
 import '../events/on_message_received.dart';
 import '../events/on_ready.dart';
-import '../modules/logging.dart' as modlogs;
+import '../modules/modlogs.dart';
 
 Future<void> registerEvents(INyxxWebsocket client) async {
   client.eventsWs.onReady.listen(onReady);
@@ -11,5 +11,5 @@ Future<void> registerEvents(INyxxWebsocket client) async {
 }
 
 Future<void> registerModules(INyxxWebsocket client) async {
-  client.eventsWs.onMessageDelete.listen(modlogs.message_deleted);
+  client.eventsWs.onMessageDelete.listen(Modlogs_Module().message_deleted);
 }

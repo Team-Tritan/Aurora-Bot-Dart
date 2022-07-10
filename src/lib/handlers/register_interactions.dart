@@ -1,6 +1,6 @@
-library registerCommands;
-
 import 'dart:async';
+import 'package:nyxx_interactions/nyxx_interactions.dart';
+import 'package:nyxx/nyxx.dart';
 import '../commands/config/logging.dart';
 import '../commands/fun/coinflip.dart';
 import '../commands/info/help.dart';
@@ -9,8 +9,6 @@ import '../commands/info/ping.dart';
 import '../commands/info/stats.dart';
 import '../commands/utility/afk.dart';
 import '../commands/utility/bookmark.dart';
-import 'package:nyxx_interactions/nyxx_interactions.dart';
-import 'package:nyxx/nyxx.dart';
 
 late IInteractions interactionsWS;
 

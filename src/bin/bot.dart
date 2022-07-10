@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import '../config.dart';
 import '../lib/handlers/register_interactions.dart';
 import '../lib/handlers/register_events.dart';
+import '../lib/modules/reminders.dart';
 
 late INyxxWebsocket client;
 
@@ -13,13 +14,12 @@ void main() async {
   )
     ..registerPlugin(Logging())
     ..registerPlugin(CliIntegration())
-    ..registerPlugin(IgnoreExceptions());
+    ..registerPlugin(IgnoreExceptions())
+    ..connect();
 
   registerEvents(client);
   registerInteractions(client);
   registerModules(client);
 
   Hive.init('../../database');
-
-  await client.connect();
 }
