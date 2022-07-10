@@ -14,7 +14,7 @@ class HelpCommand {
 
     print("[Command Ran] --> $name");
 
-    final command = SlashCommandBuilder(name, description, [])
+    final command = SlashCommandBuilder(this.name, this.description, [])
       ..registerHandler((ISlashCommandInteractionEvent event) async {
         if (dm_disabled) checkForGuild(event);
 
@@ -28,7 +28,8 @@ class HelpCommand {
           ..title = 'Command Help'
           ..color = DiscordColor.fromHexString("#5865F2")
           ..timestamp = DateTime.now()
-          ..addField(name: 'Info Commands', content: 'help, invite, ping')
+          ..addField(
+              name: 'Info Commands', content: 'help, invite, ping, stats')
           ..addField(name: 'Fun Commands', content: 'coinflip')
           ..addField(name: 'Utility Commands', content: 'bookmark, afk')
           ..addField(name: 'Bot Settings', content: 'logging')
