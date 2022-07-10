@@ -1,0 +1,15 @@
+name: Fetch Upstream
+
+on: pull_request
+
+jobs:
+  fetch-upstream:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@main
+    - name: Fetch Upstream
+      uses: Team-Tritan/Aurora-Bot-Dart@main
+      with:
+        upstream: babel/babel
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
