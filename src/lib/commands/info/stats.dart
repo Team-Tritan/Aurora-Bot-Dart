@@ -44,7 +44,7 @@ class StatsCommand {
           ..addField(name: '💿 CPU Cores', content: Processors, inline: true)
           ..addField(
               name: '📊 Ram Usage',
-              content: '${Free_Ram}/${Total_Ram}gb',
+              content: '${Total_Ram - Free_Ram}/$Total_Ram GB',
               inline: true)
           ..addField(name: '🍿 Kernel', content: Kernel, inline: true)
           ..timestamp = DateTime.now()

@@ -34,7 +34,7 @@ class PingCommand {
         final apiLatency = apiStopwatch.elapsedMilliseconds;
         apiStopwatch.stop();
 
-        baseEmbed = EmbedBuilder()
+        final baseEmbed = EmbedBuilder()
           ..addAuthor((author) {
             author.name = 'Aurora Bot';
             author.iconUrl = client.self.avatarURL();

@@ -9,17 +9,15 @@ class CoinFlipCommand {
   String description = "A super awesome coin flip command.";
 
   register(INyxxWebsocket client) {
-    late final EmbedBuilder baseEmbed;
-
     print("[Command Ran] --> $name");
 
     final command = SlashCommandBuilder(this.name, this.description, [])
       ..registerHandler((ISlashCommandInteractionEvent event) async {
         await event.acknowledge();
 
-        final result = Random().nextBool() ? "tail" : "heads";
+        final result = Random().nextBool() ? "tails" : "heads";
 
-        baseEmbed = EmbedBuilder()
+        var baseEmbed = EmbedBuilder()
           ..addAuthor((author) {
             author.name = 'Aurora Bot';
             author.iconUrl = client.self.avatarURL();
