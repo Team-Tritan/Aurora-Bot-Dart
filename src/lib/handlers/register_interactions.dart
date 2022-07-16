@@ -3,6 +3,7 @@ import 'package:nyxx_interactions/nyxx_interactions.dart';
 import 'package:nyxx/nyxx.dart';
 import '../commands/config/logging.dart';
 import '../commands/fun/coinflip.dart';
+import '../commands/fun/ppsize.dart';
 import '../commands/info/help.dart';
 import '../commands/info/invite.dart';
 import '../commands/info/ping.dart';
@@ -23,6 +24,7 @@ Future<void> registerInteractions(INyxxWebsocket client) async {
   new AFKCommand().register(client);
   new LoggingCommand().register(client);
   new StatsCommand().register(client);
+  new PPSizeCommand().register(client);
 
   interactionsWS.syncOnReady();
 }
