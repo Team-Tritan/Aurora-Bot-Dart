@@ -32,7 +32,7 @@ class ModlogsModule {
   }
 
   Future<void> message_updated(event) async {
-    final guild_id = event.oldMessage.guild.id.toString();
+    final guild_id = event.oldMessage?.guild?.id.toString();
 
     final author_tag = event.oldMessage.author.tag.toString() +
         event.oldMessage.author.discriminator.toString();
@@ -77,11 +77,19 @@ class ModlogsModule {
     await log_channel.sendMessage(MessageBuilder.embed(logger));
   }
 
-  Future<void> message_bulk_delete(event) async {
-    final guild_id = event.guild.id.toString();
+  Future<void> message_bulk_delete(IMessageDeleteBulkEvent event) async {
+    final guild_id = event.guild?.id.toString();
     final stuff = event.getDeletedMessages();
 
+    var settings = await Hive.openBox('Settings');
+    var guild_settings = settings.get(guild_id);
+    var modlog_id = guild_settings['channel'];
+
     final embed = EmbedBuilder()
+      ..addAuthor((author) {
+        author.name = 'Aurora Bot';
+        author.iconUrl = client.self.avatarURL();
+      })
       ..title = 'Message Bulk Deleted'
       ..color = DiscordColor.fromHexString("#5865F2");
 
@@ -91,9 +99,60 @@ class ModlogsModule {
                 name: 'ID: ${i.id.toString()}', content: '```${i.content}```')
         });
 
+    final log_channel =
+        await client.fetchChannel(Snowflake(modlog_id)) as ITextChannel;
+
+    await log_channel.sendMessage(MessageBuilder.embed(embed));
+  }
+
+  Future<void> role_created(IRoleCreateEvent event) async {
+    final guild_id = event.guild.id.toString();
+    final role_name = event.role.name.toString();
+    final role_id = event.role.id.toString();
+    final role_createdAt = event.role.createdAt.toString();
+
     var settings = await Hive.openBox('Settings');
     var guild_settings = settings.get(guild_id);
     var modlog_id = guild_settings['channel'];
+
+    final embed = EmbedBuilder()
+      ..addAuthor((author) {
+        author.name = 'Aurora Bot';
+        author.iconUrl = client.self.avatarURL();
+      })
+      ..title = 'Role Created'
+      ..addField(name: 'Role Name', content: role_name, inline: true)
+      ..addField(name: "Role ID", content: role_id, inline: true)
+      ..addField(name: 'Created At', content: role_createdAt, inline: false)
+      ..color = DiscordColor.fromHexString("#5865F2")
+      ..timestamp = DateTime.now();
+
+    final log_channel =
+        await client.fetchChannel(Snowflake(modlog_id)) as ITextChannel;
+
+    await log_channel.sendMessage(MessageBuilder.embed(embed));
+  }
+
+  Future<void> role_deleted(IRoleCreateEvent event) async {
+    final guild_id = event.guild.id.toString();
+    final role_name = event.role.name.toString();
+    final role_id = event.role.id.toString();
+
+    var settings = await Hive.openBox('Settings');
+    var guild_settings = settings.get(guild_id);
+    var modlog_id = guild_settings['channel'];
+
+    final embed = EmbedBuilder()
+      ..addAuthor((author) {
+        author.name = 'Aurora Bot';
+        author.iconUrl = client.self.avatarURL();
+      })
+      ..title = 'Role Deleted'
+      ..addField(name: 'Role Name', content: role_name, inline: true)
+      ..addField(name: "Role ID", content: role_id, inline: true)
+      ..addField(name: 'Deleted At', content: DateTime.now(), inline: false)
+      ..color = DiscordColor.fromHexString("#5865F2")
+      ..timestamp = DateTime.now();
 
     final log_channel =
         await client.fetchChannel(Snowflake(modlog_id)) as ITextChannel;
