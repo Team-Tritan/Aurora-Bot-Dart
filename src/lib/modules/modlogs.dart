@@ -6,10 +6,16 @@ class ModlogsModule {
   final String module = 'Modlogs';
 
   Future<void> message_deleted(event) async {
+    if (!event.message.guild) return;
+
     final author = event.message.author;
     final guild_id = event.message.guild?.id.toString();
     final author_tag = author.tag.toString() + author.discriminator.toString();
     final content = event.message.content.toString();
+
+    if (guild_id == null) return;
+    if (author == null) return;
+    if (content == '') return;
 
     var settings = await Hive.openBox('Settings');
     var guild_settings = settings.get(guild_id);
@@ -32,6 +38,8 @@ class ModlogsModule {
   }
 
   Future<void> message_updated(event) async {
+    if (!event.oldMessage.guild) return;
+
     final guild_id = event.oldMessage?.guild?.id.toString();
 
     final author_tag = event.oldMessage.author.tag.toString() +
