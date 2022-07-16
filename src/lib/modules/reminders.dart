@@ -49,5 +49,7 @@ class RemindersModule {
 // check & send reminders
   Future<void> check_reminders(
     INyxxWebsocket client,
-  ) async {}
+  ) async {
+    
+  }
 }
