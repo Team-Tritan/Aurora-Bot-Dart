@@ -3,6 +3,7 @@ import "dart:math";
 import 'dart:async';
 import '../../config.dart';
 import '../../bin/bot.dart' show client;
+import '../modules/reminders.dart';
 
 final bool isStopped = false;
 final _random = new Random();
@@ -16,9 +17,12 @@ Future<void> onReady(event) async {
     ),
   );
 
+// Init functions
   setStatusTimer(client);
+  checkReminders(client);
 }
 
+// Functions
 setStatusTimer(client) {
   Timer.periodic(Duration(minutes: 20), (timer) {
     if (isStopped) {
@@ -35,5 +39,11 @@ setStatusTimer(client) {
     );
 
     print("[Status Updated] --> $status");
+  });
+}
+
+checkReminders(client) {
+  Timer.periodic(Duration(seconds: 1), (timer) {
+    RemindersModule().check_reminders(client);
   });
 }
