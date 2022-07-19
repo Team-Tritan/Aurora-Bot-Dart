@@ -17,6 +17,7 @@ class CoinFlipCommand {
 
         final result = Random().nextBool() ? "tails" : "heads";
 
+        // this is a statement... additional feelings
         var baseEmbed = EmbedBuilder()
           ..addAuthor((author) {
             author.name = 'Aurora Bot';

@@ -48,9 +48,9 @@ class RemindersModule {
     INyxxWebsocket client,
   ) async {
     var box = await Hive.openBox("Reminders");
-    var array = box.toMap();
+    var reminders_map = box.toMap();
 
-    array.forEach((key, value) async {
+    reminders_map.forEach((key, value) async {
       var current_time = new DateTime.now();
       var reminder_ends = value.timeEnds;
 

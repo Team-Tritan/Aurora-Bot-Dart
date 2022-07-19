@@ -2,7 +2,7 @@ import 'package:nyxx_interactions/nyxx_interactions.dart';
 import 'package:nyxx/nyxx.dart';
 import 'package:hive/hive.dart';
 import '../../utils/check_for_guild.dart';
-import '../../handlers/register_interactions.dart' show interactionsWS;
+import '../../handlers/register_interactions.dart' show interactionsWS; // ie import x from y
 
 class AFKCommand {
   String name = "afk";
