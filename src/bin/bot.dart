@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 import '../config.dart';
 import '../lib/handlers/register_interactions.dart';
 import '../lib/handlers/register_events.dart';
-import '../lib/modules/reminders.dart';
+//import '../lib/modules/reminders.dart';
 
 late INyxxWebsocket client;
 

@@ -16,6 +16,6 @@ void disableAFK(INyxxWebsocket client, message) async {
 
     //return message.channel.sendMessage(MessageBuilder.embed(baseEmbed));
 
-    return message.author.sendMessage(MessageBuilder.embed(baseEmbed));
+    return message.channel.sendMessage(MessageBuilder.embed(baseEmbed));
   }
 }

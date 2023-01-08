@@ -6,14 +6,13 @@ class ModlogsModule {
   final String module = 'Modlogs';
 
   Future<void> message_deleted(event) async {
-    if (!event.message.guild) return;
-
     final author = event.message.author;
     final guild_id = event.message.guild?.id.toString();
+    if (guild_id == null) return;
+
     final author_tag = author.tag.toString() + author.discriminator.toString();
     final content = event.message.content.toString();
 
-    if (guild_id == null) return;
     if (author == null) return;
     if (content == '') return;
 
