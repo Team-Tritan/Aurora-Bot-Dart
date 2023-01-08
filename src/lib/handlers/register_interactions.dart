@@ -11,7 +11,8 @@ import '../commands/info/ping.dart';
 import '../commands/info/stats.dart';
 import '../commands/utility/afk.dart';
 import '../commands/utility/bookmark.dart';
-import '../commands/utility/remind.dart';
+//import '../commands/utility/remind.dart';
+import '../commands/fun/yesorno.dart';
 
 late IInteractions interactionsWS;
 
@@ -29,6 +30,7 @@ Future<void> registerInteractions(INyxxWebsocket client) async {
   new PPSizeCommand().register(client);
   //new RemindCommand().register(client);
   new LewdCommand().register(client);
+  new YesOrNoCommand().register(client);
 
   interactionsWS.syncOnReady();
 }
